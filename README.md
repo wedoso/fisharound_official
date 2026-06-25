@@ -16,7 +16,7 @@ The bundled workflow publishes the repository root directly.
 The site has no build command. Open `index.html` directly or serve it locally:
 
 ```sh
-python3 -m http.server 4173 -d website
+python3 -m http.server 4173
 ```
 
 Pages:
