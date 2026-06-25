@@ -27,3 +27,5 @@ Pages:
 - `404.html`
 
 Support email: `fisharound_support@icloud.com`
+
+English display text uses Gaegu. Chinese body and headings use a lighter system CJK font stack, while the logo retains ZCOOL KuaiLe for a small amount of character.
