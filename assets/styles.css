@@ -38,6 +38,7 @@ html {
 
 body {
   margin: 0;
+  padding-top: 18px;
   color: var(--ink);
   background:
     radial-gradient(circle at 8% 4%, rgba(255,255,255,.72), transparent 25rem),
@@ -91,7 +92,7 @@ a:hover { color: #294732; }
 
 .site-header {
   width: min(1180px, calc(100% - 32px));
-  margin: 18px auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
