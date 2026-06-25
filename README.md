@@ -2,16 +2,13 @@
 
 Static, dependency-free website for GitHub Pages.
 
-## Publish with GitHub Pages
+Live site: https://wedoso.github.io/fisharound_official/
 
-This folder is also structured so it can be published as the root of a standalone website repository.
+Source repository: https://github.com/wedoso/fisharound_official
 
-1. Push it to GitHub as the repository root.
-2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, choose **GitHub Actions**.
-4. Push to `main`, or manually run **Deploy Fish Around website** from the Actions tab.
+## Deployment
 
-The bundled workflow publishes the repository root directly.
+The standalone repository publishes its root through `.github/workflows/pages.yml`. Pushing to `main` triggers deployment.
 
 The site has no build command. Open `index.html` directly or serve it locally:
 
