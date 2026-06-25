@@ -4,12 +4,14 @@ Static, dependency-free website for GitHub Pages.
 
 ## Publish with GitHub Pages
 
-1. Push this repository to GitHub.
+This folder is also structured so it can be published as the root of a standalone website repository.
+
+1. Push it to GitHub as the repository root.
 2. In the repository, open **Settings → Pages**.
 3. Under **Build and deployment**, choose **GitHub Actions**.
-4. Push a change under `website/`, or manually run **Deploy Fish Around website** from the Actions tab.
+4. Push to `main`, or manually run **Deploy Fish Around website** from the Actions tab.
 
-The workflow at `.github/workflows/pages.yml` publishes this folder directly, so it does not need to be renamed to `docs`.
+The bundled workflow publishes the repository root directly.
 
 The site has no build command. Open `index.html` directly or serve it locally:
 
