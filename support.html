@@ -21,7 +21,16 @@
       <a href="index.html" data-en="Home" data-zh="首页">Home</a>
       <a href="privacy.html" data-en="Privacy" data-zh="隐私">Privacy</a>
       <a class="active" href="support.html" data-en="Support" data-zh="支持">Support</a>
-      <button class="language-button" type="button" data-language-toggle aria-label="切换到中文">中文</button>
+      <label class="language-select" aria-label="Language">
+        <span>Language</span>
+        <select data-language-select>
+          <option value="en">English</option>
+          <option value="zh">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+        </select>
+      </label>
     </nav>
   </header>
 
@@ -53,7 +62,7 @@
         </details>
         <details>
           <summary data-en="How do pond reminders work?" data-zh="池塘提醒是怎样工作的？">How do pond reminders work?</summary>
-          <p data-en="If enabled in the app, local reminders may appear after about 22 hours, 3 days, and 7 days away. Opening Fish Around cancels pending reminders. You can turn them off in the app or in iOS Settings." data-zh="开启后，离开约 22 小时、3 天和 7 天时可能收到本地提醒。打开摸鱼会取消尚未发送的提醒。你可以在应用内或 iOS 设置中关闭。">If enabled in the app, local reminders may appear after about 22 hours, 3 days, and 7 days away. Opening Fish Around cancels pending reminders. You can turn them off in the app or in iOS Settings.</p>
+          <p data-en="Pond reminders are on by default after iOS notification permission is granted. Local reminders may appear after about 22 hours, 3 days, and 7 days away. Opening Fish Around resets the reminder timer for the next time you leave. You can turn them off in the app or in iOS Settings." data-zh="获得 iOS 通知权限后，池塘提醒会默认开启。离开约 22 小时、3 天和 7 天时可能收到本地提醒。打开摸鱼会重置下一次离开后的提醒计时。你可以在应用内或 iOS 设置中关闭。">Pond reminders are on by default after iOS notification permission is granted. Local reminders may appear after about 22 hours, 3 days, and 7 days away. Opening Fish Around resets the reminder timer for the next time you leave. You can turn them off in the app or in iOS Settings.</p>
         </details>
         <details>
           <summary data-en="How do I report a bug?" data-zh="如何报告问题？">How do I report a bug?</summary>
