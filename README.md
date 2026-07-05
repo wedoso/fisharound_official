@@ -4,6 +4,8 @@ Static, dependency-free five-language website for GitHub Pages.
 
 Live site: https://wedoso.github.io/fisharound_official/
 
+App Store: https://apps.apple.com/us/app/fish-around-pond-builder/id6785642342
+
 Source repository: https://github.com/wedoso/fisharound_official
 
 ## Deployment

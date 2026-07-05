@@ -239,7 +239,9 @@ h3 { margin: 0 0 7px; font-size: 25px; line-height: 1.1; }
   color: #fff;
   box-shadow: 0 8px 20px rgba(40,60,48,.2);
   line-height: 1;
+  text-decoration: none;
 }
+.store-badge:hover { color: #fff; background: #203427; }
 .store-badge > span:first-child { font-family: system-ui, sans-serif; font-size: 29px; }
 .store-badge > span:last-child { display: grid; }
 .store-badge small { font-family: system-ui, sans-serif; font-size: 9px; }
