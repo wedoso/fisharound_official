@@ -195,7 +195,8 @@
     "Fish Around works offline and uses no accounts, analytics, advertising trackers, or third-party SDKs. Progress and preferences stay local.": "Fish Aroundはオフラインで動作し、アカウント、分析、広告トラッカー、第三者SDKを使いません。進行状況と設定は端末内に残ります。",
     "Ready to visit the pond?": "池を訪ねてみませんか？",
     "Free to download on iPhone and iPad.": "iPhoneとiPadで無料ダウンロード。",
-    "Open in the App Store": "App Storeで開く"
+    "Open in the App Store": "App Storeで開く",
+    "Select a pond to preview it": "池を選ぶとプレビューできます"
   });
 
   Object.assign(korean, {
@@ -242,7 +243,8 @@
     "Fish Around works offline and uses no accounts, analytics, advertising trackers, or third-party SDKs. Progress and preferences stay local.": "Fish Around는 오프라인으로 작동하며 계정, 분석, 광고 추적기 또는 제3자 SDK를 사용하지 않습니다. 진행 상황과 설정은 기기에 남습니다.",
     "Ready to visit the pond?": "연못에 놀러 갈까요?",
     "Free to download on iPhone and iPad.": "iPhone과 iPad에서 무료로 다운로드하세요.",
-    "Open in the App Store": "App Store에서 열기"
+    "Open in the App Store": "App Store에서 열기",
+    "Select a pond to preview it": "연못을 선택해 미리 보세요"
   });
 
   function toTraditionalChinese(text) {
@@ -277,7 +279,8 @@
       ["环境", "環境"], ["界面", "介面"], ["成为", "成為"], ["纪念", "紀念"],
       ["累积", "累積"], ["属于", "屬於"], ["几句", "幾句"], ["当", "當"],
       ["后", "後"], ["着", "著"], ["发", "發"], ["绘", "繪"], ["灵", "靈"],
-      ["独", "獨"], ["细", "細"], ["张", "張"], ["话", "話"]
+      ["独", "獨"], ["细", "細"], ["张", "張"], ["话", "話"],
+      ["选择", "選擇"], ["预览", "預覽"]
     ];
     return replacements.reduce((value, [from, to]) => value.replaceAll(from, to), text);
   }
@@ -364,16 +367,83 @@
     }[language];
   }
 
+  const themeChoices = Array.from(document.querySelectorAll("[data-theme-choice]"));
+  const themePreview = document.querySelector("[data-theme-preview]");
+  const themePreviewImage = document.querySelector("[data-theme-preview-image]");
+  const themePreviewLabel = document.querySelector("[data-theme-preview-label]");
+
+  function activeThemeChoice() {
+    return themeChoices.find((choice) => choice.getAttribute("aria-selected") === "true") || themeChoices[0];
+  }
+
+  function refreshThemePreviewText() {
+    const choice = activeThemeChoice();
+    const name = choice?.querySelector("h3")?.textContent?.trim();
+    if (!name || !themePreviewLabel || !themePreviewImage) return;
+    themePreviewLabel.textContent = name;
+    themePreviewImage.alt = name;
+  }
+
+  function selectThemePreview(choice, shouldFocus = false) {
+    if (!choice || !themePreview || !themePreviewImage) return;
+    const theme = choice.dataset.themeChoice;
+    const imagePath = choice.dataset.themeImage;
+    const imageChanged = imagePath && themePreviewImage.getAttribute("src") !== imagePath;
+
+    themeChoices.forEach((item) => {
+      const selected = item === choice;
+      item.classList.toggle("is-selected", selected);
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    });
+
+    themePreview.dataset.theme = theme;
+    themePreview.setAttribute("aria-labelledby", choice.id);
+    refreshThemePreviewText();
+
+    if (imageChanged) {
+      themePreview.classList.add("is-changing");
+      const finish = () => themePreview.classList.remove("is-changing");
+      themePreviewImage.addEventListener("load", finish, { once: true });
+      themePreviewImage.src = imagePath;
+      if (themePreviewImage.complete) requestAnimationFrame(finish);
+    }
+
+    if (shouldFocus) choice.focus();
+  }
+
+  themeChoices.forEach((choice, index) => {
+    choice.addEventListener("click", () => selectThemePreview(choice));
+    choice.addEventListener("keydown", (event) => {
+      let nextIndex;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % themeChoices.length;
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + themeChoices.length) % themeChoices.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = themeChoices.length - 1;
+      if (nextIndex === undefined) return;
+      event.preventDefault();
+      selectThemePreview(themeChoices[nextIndex], true);
+    });
+  });
+
+  themeChoices.slice(1).forEach((choice) => {
+    const imagePath = choice.dataset.themeImage;
+    if (imagePath) new Image().src = imagePath;
+  });
+  selectThemePreview(activeThemeChoice());
+
   languageSelect?.addEventListener("change", (event) => {
     const nextLanguage = event.target.value;
     if (languages.includes(nextLanguage)) {
       applyLanguage(nextLanguage);
+      refreshThemePreviewText();
     }
   });
 
   toggle?.addEventListener("click", () => {
     const language = currentLanguage();
     applyLanguage(languages[(languages.indexOf(language) + 1) % languages.length]);
+    refreshThemePreviewText();
   });
 
   document.querySelectorAll("[data-current-year]").forEach((element) => {

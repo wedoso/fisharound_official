@@ -304,14 +304,14 @@ h3 {
 
 .hero {
   position: relative;
-  width: min(1280px, 100%);
+  width: min(1440px, 100%);
   min-height: 850px;
   margin: -86px auto 0;
-  padding: 190px max(30px, calc((100% - 1180px) / 2)) 96px;
+  padding: 190px clamp(30px, 5vw, 82px) 96px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(370px, 480px);
   align-items: center;
-  gap: clamp(48px, 8vw, 118px);
+  gap: clamp(48px, 7vw, 104px);
   isolation: isolate;
 }
 
@@ -596,8 +596,150 @@ h3 {
     radial-gradient(ellipse at 65% 64%, rgba(237, 193, 105, .24), transparent 48%);
 }
 
-.app-shot-themes {
-  rotate: -2.4deg;
+.theme-preview {
+  --preview-paper: #eef2cf;
+  --preview-line: rgba(92, 121, 81, .34);
+  position: relative;
+  z-index: 2;
+  width: min(390px, 82vw);
+  margin: 0;
+  padding: 9px 9px 0;
+  overflow: hidden;
+  border: 1px solid rgba(105, 82, 49, .20);
+  border-radius: 46px 43px 50px 44px;
+  background: linear-gradient(160deg, rgba(255, 249, 236, .98), var(--preview-paper));
+  box-shadow: var(--shot-shadow);
+  rotate: -2.2deg;
+  transition: background .35s ease, box-shadow .35s ease, rotate .35s ease;
+}
+
+.theme-preview[data-theme="summerNight"],
+.theme-preview[data-theme="halloween"] {
+  --preview-paper: #2b344f;
+  --preview-line: rgba(243, 204, 129, .36);
+  box-shadow: 0 38px 90px rgba(20, 27, 52, .34), 0 0 64px rgba(94, 110, 176, .18);
+}
+
+.theme-preview[data-theme="autumn"] {
+  --preview-paper: #ead4a4;
+  --preview-line: rgba(153, 103, 47, .32);
+}
+
+.theme-preview::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--preview-line);
+  border-radius: 40px 38px 44px 38px;
+  pointer-events: none;
+}
+
+.theme-preview-canvas {
+  position: relative;
+  aspect-ratio: 840 / 1834;
+  overflow: hidden;
+  border-radius: 37px 35px 31px 29px;
+  background: #bdd9bc;
+}
+
+.theme-preview-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .18s ease, scale .45s ease;
+}
+
+.theme-preview.is-changing .theme-preview-image {
+  opacity: .42;
+  scale: 1.018;
+}
+
+.theme-preview-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .18), transparent 30% 72%, rgba(255, 244, 210, .09));
+  pointer-events: none;
+}
+
+.theme-preview-fish img {
+  position: absolute;
+  z-index: 2;
+  width: 25%;
+  max-height: 10%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 7px rgba(18, 42, 38, .22));
+  transition: filter .35s ease;
+}
+
+.theme-preview-fish img:nth-child(1) {
+  left: 18%;
+  top: 55%;
+  rotate: 7deg;
+}
+
+.theme-preview-fish img:nth-child(2) {
+  right: 15%;
+  top: 67%;
+  width: 22%;
+  rotate: -8deg;
+}
+
+.theme-preview-fish img:nth-child(3) {
+  right: 13%;
+  top: 35%;
+  width: 21%;
+  rotate: 5deg;
+}
+
+.theme-preview-fish img:nth-child(4) {
+  left: 27%;
+  top: 21%;
+  width: 23%;
+  rotate: -5deg;
+}
+
+.theme-preview[data-theme="summerNight"] .theme-preview-fish img,
+.theme-preview[data-theme="halloween"] .theme-preview-fish img {
+  filter: brightness(.82) saturate(.88) hue-rotate(5deg) drop-shadow(0 8px 8px rgba(3, 7, 25, .52));
+}
+
+.theme-preview figcaption {
+  position: relative;
+  z-index: 3;
+  min-height: 72px;
+  padding: 13px 18px 15px;
+  display: grid;
+  align-content: center;
+  text-align: center;
+}
+
+.theme-preview figcaption span,
+.theme-preview figcaption small {
+  display: block;
+}
+
+.theme-preview figcaption span {
+  color: var(--green-dark);
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.theme-preview figcaption small {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.theme-preview[data-theme="summerNight"] figcaption span,
+.theme-preview[data-theme="halloween"] figcaption span {
+  color: #fff1d4;
+}
+
+.theme-preview[data-theme="summerNight"] figcaption small,
+.theme-preview[data-theme="halloween"] figcaption small {
+  color: rgba(244, 230, 202, .72);
 }
 
 .themes-copy {
@@ -616,7 +758,8 @@ h3 {
 .theme-row {
   position: relative;
   min-height: 76px;
-  padding: 13px 17px 13px 15px;
+  width: 100%;
+  padding: 13px 48px 13px 15px;
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
   align-items: center;
@@ -625,6 +768,51 @@ h3 {
   border-radius: 23px 20px 25px 21px;
   background: rgba(255, 250, 238, .66);
   box-shadow: 0 8px 20px rgba(62, 76, 46, .06);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: translate .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.theme-row:hover {
+  translate: 3px 0;
+  border-color: rgba(67, 98, 69, .29);
+  background: rgba(255, 251, 241, .92);
+}
+
+.theme-row:focus-visible {
+  outline: 3px solid rgba(66, 105, 75, .38);
+  outline-offset: 3px;
+}
+
+.theme-row.is-selected {
+  border-color: rgba(58, 94, 65, .36);
+  background: rgba(247, 246, 221, .96);
+  box-shadow: 0 12px 28px rgba(49, 72, 47, .13);
+}
+
+.theme-selected-mark {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(54, 87, 59, .20);
+  border-radius: 50%;
+  color: #fffaf0;
+  background: var(--green);
+  opacity: 0;
+  scale: .7;
+  translate: 0 -50%;
+  transition: opacity .2s ease, scale .2s ease;
+}
+
+.theme-row.is-selected .theme-selected-mark {
+  opacity: 1;
+  scale: 1;
 }
 
 .theme-row h3 {
@@ -663,7 +851,12 @@ h3 {
 
 .halloween-theme {
   grid-template-columns: 48px minmax(0, 1fr) auto;
+  padding-right: 48px;
   background: linear-gradient(105deg, rgba(54, 52, 82, .10), rgba(255, 250, 238, .72));
+}
+
+.halloween-theme.is-selected {
+  background: linear-gradient(105deg, rgba(61, 58, 96, .16), rgba(249, 243, 221, .96));
 }
 
 .season-tag {
@@ -1455,7 +1648,7 @@ details p {
   }
 
   .theme-row {
-    padding-right: 13px;
+    padding-right: 48px;
   }
 
   .final-cta {

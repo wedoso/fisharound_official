@@ -11,8 +11,8 @@
   <title>Fish Around · 摸鱼</title>
   <link rel="icon" href="assets/app-icon.png">
   <link rel="preload" href="assets/product-spring.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/styles.css?v=2">
-  <script defer src="assets/site.js?v=2"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=3">
+  <script defer src="assets/site.js?v=3"></script>
 </head>
 <body class="home-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -81,32 +81,49 @@
     <section class="themes-section" id="themes">
       <div class="themes-visual reveal">
         <div class="paint-wash paint-wash-sage" aria-hidden="true"></div>
-        <figure class="app-shot app-shot-themes">
-          <img src="assets/product-themes.webp" alt="Four selectable watercolor pond themes" width="840" height="1817" loading="lazy">
+        <figure class="theme-preview" id="theme-preview-panel" role="tabpanel" aria-live="polite" data-theme-preview data-theme="spring">
+          <div class="theme-preview-canvas">
+            <img class="theme-preview-image" data-theme-preview-image src="assets/theme-spring.webp" alt="Spring Pond" width="840" height="1834" loading="lazy">
+            <div class="theme-preview-fish" aria-hidden="true">
+              <img src="assets/fish-orange.png" alt="">
+              <img src="assets/fish-blue.png" alt="">
+              <img src="assets/fish-red.png" alt="">
+              <img src="assets/fish-black.png" alt="">
+            </div>
+            <span class="theme-preview-shine" aria-hidden="true"></span>
+          </div>
+          <figcaption>
+            <span data-theme-preview-label>Spring Pond</span>
+            <small data-en="Select a pond to preview it" data-zh="选择池塘即可预览">Select a pond to preview it</small>
+          </figcaption>
         </figure>
       </div>
       <div class="themes-copy reveal">
         <p class="eyebrow" id="whats-new" data-en="New in version 2.0" data-zh="2.0 版本新内容">New in version 2.0</p>
         <h2 data-en="Four ponds, four moods." data-zh="四方池塘，四种心情。">Four ponds, four moods.</h2>
         <p class="section-lead" data-en="Each pond has its own portrait and landscape painting, ambient color, music, decorations, and hand-painted interface." data-zh="每方池塘都有独立的横竖屏画作、环境色彩、音乐、装饰和手绘界面。">Each pond has its own portrait and landscape painting, ambient color, music, decorations, and hand-painted interface.</p>
-        <div class="theme-list">
-          <article class="theme-row spring-theme">
+        <div class="theme-list" role="tablist" aria-label="Pond theme preview">
+          <button class="theme-row spring-theme is-selected" type="button" role="tab" id="theme-tab-spring" aria-controls="theme-preview-panel" aria-selected="true" data-theme-choice="spring" data-theme-image="assets/theme-spring.webp">
             <span class="theme-swatch" aria-hidden="true"></span>
             <div><h3 data-en="Spring Pond" data-zh="春日池塘">Spring Pond</h3><p data-en="Soft leaves and clear morning water." data-zh="柔软的新叶与清亮晨光。">Soft leaves and clear morning water.</p></div>
-          </article>
-          <article class="theme-row summer-theme">
+            <span class="theme-selected-mark" aria-hidden="true">✓</span>
+          </button>
+          <button class="theme-row summer-theme" type="button" role="tab" id="theme-tab-summer" aria-controls="theme-preview-panel" aria-selected="false" tabindex="-1" data-theme-choice="summerNight" data-theme-image="assets/theme-summer-night.webp">
             <span class="theme-swatch" aria-hidden="true"></span>
             <div><h3 data-en="Summer Night" data-zh="夏夜池塘">Summer Night</h3><p data-en="Moonlit lilies in a deep blue pond." data-zh="深蓝池水里的月光与睡莲。">Moonlit lilies in a deep blue pond.</p></div>
-          </article>
-          <article class="theme-row autumn-theme">
+            <span class="theme-selected-mark" aria-hidden="true">✓</span>
+          </button>
+          <button class="theme-row autumn-theme" type="button" role="tab" id="theme-tab-autumn" aria-controls="theme-preview-panel" aria-selected="false" tabindex="-1" data-theme-choice="autumn" data-theme-image="assets/theme-autumn.webp">
             <span class="theme-swatch" aria-hidden="true"></span>
             <div><h3 data-en="Autumn Pond" data-zh="秋日池塘">Autumn Pond</h3><p data-en="Warm reeds, stone, and fallen leaves." data-zh="温暖的芦苇、石头与落叶。">Warm reeds, stone, and fallen leaves.</p></div>
-          </article>
-          <article class="theme-row halloween-theme">
+            <span class="theme-selected-mark" aria-hidden="true">✓</span>
+          </button>
+          <button class="theme-row halloween-theme" type="button" role="tab" id="theme-tab-halloween" aria-controls="theme-preview-panel" aria-selected="false" tabindex="-1" data-theme-choice="halloween" data-theme-image="assets/theme-halloween.webp">
             <span class="theme-swatch" aria-hidden="true"></span>
             <div><h3 data-en="Halloween Night" data-zh="万圣节之夜">Halloween Night</h3><p data-en="A seasonal pond, available September 1–October 31." data-zh="限时池塘，每年 9 月 1 日至 10 月 31 日开放。">A seasonal pond, available September 1–October 31.</p></div>
             <span class="season-tag" data-en="Limited time" data-zh="限时主题">Limited time</span>
-          </article>
+            <span class="theme-selected-mark" aria-hidden="true">✓</span>
+          </button>
         </div>
       </div>
     </section>
