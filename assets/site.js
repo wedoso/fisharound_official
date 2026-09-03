@@ -153,7 +153,7 @@
 
   Object.assign(japanese, {
     "Themes": "テーマ",
-    "Version 2.0 · iPhone & iPad": "バージョン2.0 · iPhone・iPad",
+    "Version 2.0.1 · iPhone & iPad": "バージョン2.0.1 · iPhone・iPad",
     "A little pond for unhurried moments.": "急がない時間のための、小さな池。",
     "Meet four personality-filled fish, make gentle ripples, arrange watercolor decorations, and keep the photo memories they bring home.": "個性豊かな4匹の魚と出会い、やさしい波紋を広げ、水彩の飾りを並べ、魚たちが持ち帰る写真の思い出を残しましょう。",
     "See what’s new": "新しい内容を見る",
@@ -187,7 +187,7 @@
     "Your decorations": "あなたの飾り",
     "Earn bubbles and arrange each pond your way.": "泡を集めて、それぞれの池を自分らしく飾れます。",
     "Keep, save, and share the moments they bring back.": "持ち帰った瞬間を集め、保存し、共有できます。",
-    "a gift from Inky": "インキーからの贈りもの",
+    "a gift from Red Bean": "レッドビーンからの贈りもの",
     "Seasonal · September 1–October 31": "季節限定 · 9月1日〜10月31日",
     "When the pond stays up after dark.": "日が暮れても、池が眠らない夜。",
     "Halloween Night brings cooler moonlight, glowing pumpkins, playful ghosts, its own ambient moment, and a complete dark hand-painted interface.": "ハロウィーンの夜には、冷たい月明かり、光るカボチャ、いたずらな幽霊、特別な出来事、そして手描きのダーク画面が訪れます。",
@@ -201,7 +201,7 @@
 
   Object.assign(korean, {
     "Themes": "테마",
-    "Version 2.0 · iPhone & iPad": "버전 2.0 · iPhone 및 iPad",
+    "Version 2.0.1 · iPhone & iPad": "버전 2.0.1 · iPhone 및 iPad",
     "A little pond for unhurried moments.": "서두르지 않는 순간을 위한 작은 연못.",
     "Meet four personality-filled fish, make gentle ripples, arrange watercolor decorations, and keep the photo memories they bring home.": "개성 넘치는 네 마리 물고기를 만나 잔잔한 물결을 만들고, 수채화 장식을 놓고, 물고기들이 가져온 사진 추억을 간직하세요.",
     "See what’s new": "새로운 내용 보기",
@@ -235,7 +235,7 @@
     "Your decorations": "나만의 장식",
     "Earn bubbles and arrange each pond your way.": "방울을 모아 각 연못을 원하는 대로 꾸미세요.",
     "Keep, save, and share the moments they bring back.": "물고기들이 가져온 순간을 모으고 저장하고 공유하세요.",
-    "a gift from Inky": "잉키가 가져온 선물",
+    "a gift from Red Bean": "레드빈이 가져온 선물",
     "Seasonal · September 1–October 31": "시즌 한정 · 9월 1일–10월 31일",
     "When the pond stays up after dark.": "해가 진 뒤에도 깨어 있는 연못.",
     "Halloween Night brings cooler moonlight, glowing pumpkins, playful ghosts, its own ambient moment, and a complete dark hand-painted interface.": "핼러윈 밤에는 차가운 달빛, 빛나는 호박, 장난스러운 유령, 특별한 순간과 완전한 손그림 다크 인터페이스가 찾아옵니다.",
